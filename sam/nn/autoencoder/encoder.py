@@ -1,26 +1,4 @@
-################################################################################
-# Transformer-based Encoder
-# Key Components of the Code:
-Imports:
 
-The code uses various libraries such as torch, numpy, and custom modules from sam to define neural network layers and utilities like distance calculations, positional embeddings, and activation functions.
-Functions:
-
-get_chain_torsion_features(x): This function computes torsion angles (dihedral angles) for a given input x (likely representing coordinates of atoms in a protein or similar structure). It returns the sine, cosine, and a mask for these angles. The result is padded and returned as a tensor.
-CA_TransformerEncoder Class:
-
-This is the core encoder model, which is a type of Transformer encoder network designed for processing biological sequences.
-Input: The input x represents 3D coordinates (likely for atoms in a protein structure). The input a represents amino acid indices (one-hot encoded or integers).
-Embedding Layers:
-Ca-Ca Distance Matrix: Computes the distance matrix between atoms (Ca-Ca in the case of proteins) and applies a radial basis function (RBF) or exponential normal smearing to encode spatial relationships between atoms.
-Torsion Angles: Encodes torsion angles for further input into the network.
-Positional Embeddings: Encodes the position of atoms in a 3D structure using a specialized embedding for the sequence or structure.
-Transformer Layers: The network is composed of several Transformer blocks. Each block processes the embedded data in a sequence-wise manner, with attention mechanisms to focus on important parts of the input data (such as relevant amino acid residues or spatial relationships).
-Output Module: After passing through the transformer layers, the model has an output layer that produces the encoded representation of the input sequence.
-Output:
-
-The final output is a tensor representing the encoded structural data, which may be used for downstream tasks such as prediction or reconstruction in a generative model.
-################################################################################
 
 
 import math
